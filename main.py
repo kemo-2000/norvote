@@ -2,11 +2,10 @@ from curl_cffi import requests
 from bs4 import BeautifulSoup
 import time
 success=0
-for i in range(10000):
+while True:
   try:
-    print(f"We Are In Iteration {i}")
     session = requests.Session()
-    url = "https://www.radionrjfm.com/vote/20"
+    url = "https://www.radionrjfm.com/vote/26"
 
     # impersonate="chrome" هي السحر اللي بيعدي الحماية
     response = session.get(url, impersonate="chrome")
@@ -33,7 +32,7 @@ for i in range(10000):
                     "content-type": "application/x-www-form-urlencoded",
                     # "cookie": f"webground_session={web_session}",
                     "origin": "https://www.radionrjfm.com",
-                    "referer": "https://www.radionrjfm.com/vote/20",
+                    "referer": "https://www.radionrjfm.com/vote/26",
                     "sec-ch-ua": '"Chromium";v="134", "Not:A-Brand";v="24", "Google Chrome";v="134"',
                     "sec-ch-ua-mobile": "?0",
                     "sec-ch-ua-platform": '"Windows"',
@@ -45,11 +44,11 @@ for i in range(10000):
                     "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36"
                     }
     payload = {
-            "gidvnrj": "20",
+            "gidvnrj": "26",
                 "sex": "1",
                 "age": "3",
                 "_token": csrf_token,  # Use the extracted token
-                "answers[435]": "1"
+                "answers[427]": "1"
                         }
     res2=session.post(url,headers=headers,data=payload)
     print(res2.status_code)
